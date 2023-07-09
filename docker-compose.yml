@@ -6,3 +6,5 @@ services:
       - INSTANCE=feddit.rocks
       - USERNAME=PipedLinkBot
       - PASSWORD=changeme
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
