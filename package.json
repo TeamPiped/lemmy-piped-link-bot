@@ -1,0 +1,22 @@
+{
+    "name": "lemmy-piped-link-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "tsx src/index.ts",
+        "build": "tsc"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lemmy-bot": "github:SleeplessOne1917/lemmy-bot"
+    },
+    "devDependencies": {
+        "@types/node": "20.4.1",
+        "prettier": "3.0.0",
+        "tsx": "3.12.7",
+        "typescript": "5.1.6"
+    }
+}

@@ -1,0 +1,8 @@
+services:
+  lemmy-piped:
+    image: 1337kavin/lemmy-piped-link-bot:latest
+    restart: unless-stopped
+    environment:
+      - INSTANCE=feddit.rocks
+      - USERNAME=PipedLinkBot
+      - PASSWORD=changeme
