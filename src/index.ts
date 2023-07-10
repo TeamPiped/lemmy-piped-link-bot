@@ -112,7 +112,14 @@ const bot = new LemmyBot({
                         });
 
                         if (!communityId) {
-                            (await resolveObject(m[0]))?.community?.community?.id;
+                            await resolveObject(m[0])
+                                .then(res => res?.community?.community?.id)
+                                .then(id => {
+                                    if (id) {
+                                        communityId = id;
+                                    }
+                                })
+                                .catch(err => console.log(err));
                         }
 
                         console.log(`Found community: ${communityId}`);
