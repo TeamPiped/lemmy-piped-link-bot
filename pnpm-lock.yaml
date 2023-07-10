@@ -7,7 +7,7 @@ settings:
 dependencies:
   lemmy-bot:
     specifier: github:SleeplessOne1917/lemmy-bot
-    version: 0.4.2
+    version: github.com/SleeplessOne1917/lemmy-bot/6ed4abbf3e6c343e60ecffa94059b51eae8afbb5
 
 devDependencies:
   '@types/node':
@@ -699,20 +699,8 @@ packages:
     dev: false
     optional: true
 
-  /lemmy-bot@0.4.2:
-    resolution: {integrity: sha512-Ut+EBMudYXspalL8fVITDOgqPb70Vd0Wl/lIRRTNxTaC6J5HzkXPapNruxCemTqZnf+nwgm9EhZVZiUhMc5Teg==}
-    dependencies:
-      lemmy-js-client: 0.18.1-rc.3
-      node-cron: 3.0.2
-      sqlite3: 5.1.6
-    transitivePeerDependencies:
-      - bluebird
-      - encoding
-      - supports-color
-    dev: false
-
-  /lemmy-js-client@0.18.1-rc.3:
-    resolution: {integrity: sha512-PiYX5/nDmIB8HRkgllFYRd1DgYv+R/DakyLvqjZgXTm5cAo/bPpDKZ3U481y4PsXlWI0AEm04gwi61t08fyCFA==}
+  /lemmy-js-client@0.18.1:
+    resolution: {integrity: sha512-maafUZ9ZJkXthRZmM0+limJmymF2kmN/8SiKufS3V4OVNM72s+wUFFiyhKmA370g23iZRW6SUagE7jNKnqNyYQ==}
     dependencies:
       cross-fetch: 3.1.8
       form-data: 4.0.0
@@ -1216,4 +1204,20 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: false
+
+  github.com/SleeplessOne1917/lemmy-bot/6ed4abbf3e6c343e60ecffa94059b51eae8afbb5:
+    resolution: {tarball: https://codeload.github.com/SleeplessOne1917/lemmy-bot/tar.gz/6ed4abbf3e6c343e60ecffa94059b51eae8afbb5}
+    name: lemmy-bot
+    version: 0.4.3
+    prepare: true
+    requiresBuild: true
+    dependencies:
+      lemmy-js-client: 0.18.1
+      node-cron: 3.0.2
+      sqlite3: 5.1.6
+    transitivePeerDependencies:
+      - bluebird
+      - encoding
+      - supports-color
     dev: false
