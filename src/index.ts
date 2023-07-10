@@ -125,7 +125,7 @@ const bot = new LemmyBot({
                         console.log(`Found community: ${communityId}`);
 
                         if (communityId) {
-                            await followCommunity({ community_id: communityId });
+                            await followCommunity({ community_id: communityId }).catch(err => console.log(err));
                         }
                     });
 
