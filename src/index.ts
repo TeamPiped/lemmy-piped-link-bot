@@ -49,7 +49,8 @@ const bot = new LemmyBot({
                             post_id: post_id,
                             parent_id: id,
                             content: generateLinkMessage(youtubeLinks),
-                        });
+                            language_id: 37,
+                        }).catch(err => console.log(err));
                     }
                 }
             },
@@ -86,7 +87,8 @@ const bot = new LemmyBot({
                     createComment({
                         post_id: id,
                         content: generateLinkMessage(links),
-                    });
+                        language_id: 37,
+                    }).catch(err => console.log(err));
                 }
             },
             sort: "New",
