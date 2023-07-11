@@ -25,6 +25,11 @@ if (!password) {
     throw new Error("No password provided");
 }
 
+process.on("uncaughtException", error => {
+    console.error("uncaught error:");
+    console.error(error);
+});
+
 const bot = new LemmyBot({
     instance: process.env.INSTANCE || "feddit.rocks",
     credentials: {
@@ -50,7 +55,7 @@ const bot = new LemmyBot({
                             parent_id: id,
                             content: generateLinkMessage(youtubeLinks),
                             language_id: 37,
-                        }).catch(err => console.log(err));
+                        }).catch(err => console.error(err));
                     }
                 }
             },
@@ -88,7 +93,7 @@ const bot = new LemmyBot({
                         post_id: id,
                         content: generateLinkMessage(links),
                         language_id: 37,
-                    }).catch(err => console.log(err));
+                    }).catch(err => console.error(err));
                 }
             },
             sort: "New",
@@ -121,13 +126,13 @@ const bot = new LemmyBot({
                                         communityId = id;
                                     }
                                 })
-                                .catch(err => console.log(err));
+                                .catch(err => console.error(err));
                         }
 
                         console.log(`Found community: ${communityId}`);
 
                         if (communityId) {
-                            await followCommunity(communityId).catch(err => console.log(err));
+                            await followCommunity(communityId).catch(err => console.error(err));
                         }
                     });
 
