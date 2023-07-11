@@ -10,4 +10,6 @@ RUN pnpm i
 
 COPY . .
 
-CMD ["pnpm", "start"]
+RUN pnpm build
+
+CMD ["node", "dist/index.js"]
