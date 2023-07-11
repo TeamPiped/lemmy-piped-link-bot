@@ -1,7 +1,7 @@
 import { LemmyBot } from "lemmy-bot";
 
 const findYoutubeLinks = (text: string): string[] => {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.?be)\/([\w?&=-]+)/gm;
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.?be)\/([\w\/?&=-]+)/gm;
 
     const matches = text.matchAll(regex);
 
