@@ -1,7 +1,7 @@
 import { LemmyBot } from "lemmy-bot";
 
 const findYoutubeLinks = (text: string): string[] => {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/([\w\/?&=-]+)/gm;
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/([\w/?&=-]+)/gm;
 
     const matches = text.matchAll(regex);
 
@@ -101,14 +101,14 @@ const bot = new LemmyBot({
                 botActions: { getCommunityId, resolveObject, followCommunity, sendPrivateMessage },
             }) => {
                 if (content) {
-                    const regex = /\!([\w]+)@([a-zA-Z0-9\.-]+)/gm;
+                    const regex = /!([\w]+)@([a-zA-Z0-9.-]+)/gm;
                     const matches = content.matchAll(regex);
                     const arr_matches = Array.from(matches, m => m);
                     arr_matches.forEach(async m => {
                         const communityName = m[1];
                         const instanceName = m[2];
                         console.log(`Searching community: ${communityName} on instance: ${instanceName}`);
-                        var communityId = await getCommunityId({
+                        let communityId = await getCommunityId({
                             name: communityName,
                             instance: instanceName,
                         });
@@ -127,7 +127,7 @@ const bot = new LemmyBot({
                         console.log(`Found community: ${communityId}`);
 
                         if (communityId) {
-                            await followCommunity({ community_id: communityId }).catch(err => console.log(err));
+                            await followCommunity(communityId).catch(err => console.log(err));
                         }
                     });
 
