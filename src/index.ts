@@ -1,12 +1,12 @@
 import { LemmyBot } from "lemmy-bot";
 
 const findYoutubeLinks = (text: string): string[] => {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/([\w/?&=-]+)/gm;
+    const regex = /(?:\[(.*)\]\()?(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/([\w/?&=-]+)/gm;
 
     const matches = text.matchAll(regex);
 
     if (matches) {
-        return Array.from(matches, m => `https://piped.video/${m[1]}`);
+        return Array.from(matches, m => m[1] ? `[${m[1]}](https://piped.video/${m[2]})` : `https://piped.video/${m[2]}`);
     }
 
     return [];
