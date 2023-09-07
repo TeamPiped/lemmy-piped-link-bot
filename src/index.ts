@@ -13,7 +13,7 @@ const findYoutubeLinks = (text: string): string[] => {
 };
 
 const generateLinkMessage = (links: string[]): string => {
-    return `Here is an alternative Piped link(s): ${links.join(
+    return `Here is an alternative Piped link(s): \n\n${links.join(
         "\n\n",
     )}\n\nPiped is a privacy-respecting open-source alternative frontend to YouTube.\n\nI'm open-source, check me out at [GitHub](https://github.com/TeamPiped/lemmy-piped-link-bot).`;
 };
