@@ -26,22 +26,24 @@ const getPipedLinks = (text: string): UrlLink[] => {
         });
 
     // convert youtube links to piped links
-    links.forEach(link => {
+    const pipedLinks = links.filter(link => {
         const urlObj = new URL(link.href);
 
-        // check if the url is a youtube video
-        if (
+        const isYt =
             urlObj.hostname.endsWith(".youtube.com") ||
             urlObj.hostname === "youtube.com" ||
             urlObj.hostname === "youtube-nocookie.com" ||
-            urlObj.hostname === "youtu.be"
-        ) {
+            urlObj.hostname === "youtu.be";
+
+        if (isYt) {
             urlObj.hostname = "piped.video";
             link.href = urlObj.toString();
         }
+
+        return isYt;
     });
 
-    return links;
+    return pipedLinks;
 };
 
 const generateLinkMessage = (links: UrlLink[]): string => {
