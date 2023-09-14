@@ -39,11 +39,11 @@ const findYoutubeLinks = (text: string): UrlLink[] => {
         }
     });
 
-    const pipedLinks = youtubeLinks.map(urlLinkObj => {
-        const urlObj = new URL(urlLinkObj.href);
+    const pipedLinks = youtubeLinks.map(link => {
+        const urlObj = new URL(link.href);
         urlObj.hostname = "piped.video";
         const url = urlObj.toString();
-        return new UrlLink(urlLinkObj.text, url);
+        return new UrlLink(link.text, url);
     });
 
     return pipedLinks;
