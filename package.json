@@ -22,6 +22,8 @@
         "typescript": "5.1.6"
     },
     "dependencies": {
-        "lemmy-bot": "0.4.4"
+        "jsdom": "22.1.0",
+        "lemmy-bot": "0.4.5",
+        "marked": "9.0.0"
     }
 }

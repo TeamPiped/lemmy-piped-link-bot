@@ -1,18 +1,48 @@
 import { LemmyBot } from "lemmy-bot";
+import { marked } from "marked";
+import { JSDOM } from "jsdom";
 
-const findYoutubeLinks = (text: string): string[] => {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/([\w/?&=-]+)/gm;
+class UrlLink {
+    text: string;
+    href: string;
 
-    const matches = text.matchAll(regex);
-
-    if (matches) {
-        return Array.from(matches, m => `https://piped.video/${m[1]}`);
+    constructor(text: string, href: string) {
+        this.text = text;
+        this.href = href;
     }
 
-    return [];
+    toString(): string {
+        return `[${this.text}](${this.href})`;
+    }
+}
+
+const findYoutubeLinks = (text: string): UrlLink[] => {
+    const document = new JSDOM(marked(text)).window.document;
+    const links = Array.from(document.querySelectorAll("a"))
+        .filter((a: HTMLElement) => a.textContent)
+        .map(a => {
+            const anchor = a as HTMLAnchorElement;
+            return new UrlLink(anchor.textContent!, anchor.href);
+        });
+
+    const youtubeLinks = links.filter(link => {
+        const urlObj = new URL(link.href);
+
+        // check if the url is a youtube video
+        if (
+            urlObj.hostname.endsWith(".youtube.com") ||
+            urlObj.hostname === "youtube.com" ||
+            urlObj.hostname === "youtube-nocookie.com" ||
+            urlObj.hostname === "youtu.be"
+        ) {
+            return true;
+        }
+    });
+
+    return youtubeLinks;
 };
 
-const generateLinkMessage = (links: string[]): string => {
+const generateLinkMessage = (links: UrlLink[]): string => {
     return `Here is an alternative Piped link(s): \n\n${links.join(
         "\n\n",
     )}\n\nPiped is a privacy-respecting open-source alternative frontend to YouTube.\n\nI'm open-source, check me out at [GitHub](https://github.com/TeamPiped/lemmy-piped-link-bot).`;
@@ -68,7 +98,7 @@ const bot = new LemmyBot({
                 },
                 botActions: { createComment },
             }) => {
-                const links: string[] = [];
+                const links: UrlLink[] = [];
                 if (url) {
                     const urlObj = new URL(url);
                     // check if the url is a youtube video
@@ -79,7 +109,8 @@ const bot = new LemmyBot({
                         urlObj.hostname === "youtu.be"
                     ) {
                         urlObj.hostname = "piped.video";
-                        links.push(urlObj.toString());
+                        const url = urlObj.toString();
+                        links.push(new UrlLink(url, url));
                     }
                 }
                 if (body) {
