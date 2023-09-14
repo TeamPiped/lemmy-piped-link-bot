@@ -43,7 +43,7 @@ const findYoutubeLinks = (text: string): UrlLink[] => {
         const urlObj = new URL(urlLinkObj.href);
         urlObj.hostname = "piped.video";
         const url = urlObj.toString();
-        return new UrlLink(urlObj.text, url);
+        return new UrlLink(urlLinkObj.text, url);
     });
 
     return pipedLinks;
