@@ -16,7 +16,7 @@ class UrlLink {
     }
 }
 
-const findYoutubeLinks = (text: string): UrlLink[] => {
+const getPipedLinks = (text: string): UrlLink[] => {
     const document = new JSDOM(marked(text)).window.document;
     const links = Array.from(document.querySelectorAll("a"))
         .filter((a: HTMLElement) => a.textContent)
@@ -25,7 +25,8 @@ const findYoutubeLinks = (text: string): UrlLink[] => {
             return new UrlLink(anchor.textContent!, anchor.href);
         });
 
-    const youtubeLinks = links.filter(link => {
+    // convert youtube links to piped links
+    links.forEach(link => {
         const urlObj = new URL(link.href);
 
         // check if the url is a youtube video
@@ -35,11 +36,12 @@ const findYoutubeLinks = (text: string): UrlLink[] => {
             urlObj.hostname === "youtube-nocookie.com" ||
             urlObj.hostname === "youtu.be"
         ) {
-            return true;
+            urlObj.hostname = "piped.video";
+            link.href = urlObj.toString();
         }
     });
 
-    return youtubeLinks;
+    return links;
 };
 
 const generateLinkMessage = (links: UrlLink[]): string => {
@@ -77,13 +79,13 @@ const bot = new LemmyBot({
                 botActions: { createComment },
             }) => {
                 if (content) {
-                    const youtubeLinks = findYoutubeLinks(content);
-                    if (youtubeLinks.length > 0) {
+                    const pipedLinks = getPipedLinks(content);
+                    if (pipedLinks.length > 0) {
                         // create a comment on the post
                         createComment({
                             post_id: post_id,
                             parent_id: id,
-                            content: generateLinkMessage(youtubeLinks),
+                            content: generateLinkMessage(pipedLinks),
                             language_id: 37,
                         }).catch(err => console.error(err));
                     }
@@ -114,8 +116,8 @@ const bot = new LemmyBot({
                     }
                 }
                 if (body) {
-                    const youtubeLinks = findYoutubeLinks(body);
-                    links.push(...youtubeLinks);
+                    const pipedLinks = getPipedLinks(body);
+                    links.push(...pipedLinks);
                 }
 
                 if (links.length > 0) {
