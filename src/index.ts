@@ -1,50 +1,5 @@
 import { LemmyBot } from "lemmy-bot";
-import { marked } from "marked";
-import { JSDOM } from "jsdom";
-
-class UrlLink {
-    text: string;
-    href: string;
-
-    constructor(text: string, href: string) {
-        this.text = text;
-        this.href = href;
-    }
-
-    toString(): string {
-        return `[${this.text}](${this.href})`;
-    }
-}
-
-const getPipedLinks = (text: string): UrlLink[] => {
-    const document = new JSDOM(marked(text)).window.document;
-    const links = Array.from(document.querySelectorAll("a"))
-        .filter((a: HTMLElement) => a.textContent)
-        .map(a => {
-            const anchor = a as HTMLAnchorElement;
-            return new UrlLink(anchor.textContent!, anchor.href);
-        });
-
-    // convert youtube links to piped links
-    const pipedLinks = links.filter(link => {
-        const urlObj = new URL(link.href);
-
-        const isYt =
-            urlObj.hostname.endsWith(".youtube.com") ||
-            urlObj.hostname === "youtube.com" ||
-            urlObj.hostname === "youtube-nocookie.com" ||
-            urlObj.hostname === "youtu.be";
-
-        if (isYt) {
-            urlObj.hostname = "piped.video";
-            link.href = urlObj.toString();
-        }
-
-        return isYt;
-    });
-
-    return pipedLinks;
-};
+import { getPipedLinks, UrlLink } from "./utils";
 
 const generateLinkMessage = (links: UrlLink[]): string => {
     return `Here is an alternative Piped link(s): \n\n${links.join(
@@ -144,31 +99,33 @@ const bot = new LemmyBot({
                     const regex = /!([\w]+)@([a-zA-Z0-9.-]+)/gm;
                     const matches = content.matchAll(regex);
                     const arr_matches = Array.from(matches, m => m);
-                    arr_matches.forEach(async m => {
-                        const communityName = m[1];
-                        const instanceName = m[2];
-                        console.log(`Searching community: ${communityName} on instance: ${instanceName}`);
-                        let communityId = await getCommunityId({
-                            name: communityName,
-                            instance: instanceName,
-                        });
+                    arr_matches.forEach(m => {
+                        (async () => {
+                            const communityName = m[1];
+                            const instanceName = m[2];
+                            console.log(`Searching community: ${communityName} on instance: ${instanceName}`);
+                            let communityId = await getCommunityId({
+                                name: communityName,
+                                instance: instanceName,
+                            });
 
-                        if (!communityId) {
-                            await resolveObject(m[0])
-                                .then(res => res?.community?.community?.id)
-                                .then(id => {
-                                    if (id) {
-                                        communityId = id;
-                                    }
-                                })
-                                .catch(err => console.error(err));
-                        }
+                            if (!communityId) {
+                                await resolveObject(m[0])
+                                    .then(res => res?.community?.community?.id)
+                                    .then(id => {
+                                        if (id) {
+                                            communityId = id;
+                                        }
+                                    })
+                                    .catch(err => console.error(err));
+                            }
 
-                        console.log(`Found community: ${communityId}`);
+                            console.log(`Found community: ${communityId}`);
 
-                        if (communityId) {
-                            await followCommunity(communityId).catch(err => console.error(err));
-                        }
+                            if (communityId) {
+                                await followCommunity(communityId).catch(err => console.error(err));
+                            }
+                        })().catch(err => console.error(err));
                     });
 
                     sendPrivateMessage({
@@ -176,7 +133,7 @@ const bot = new LemmyBot({
                         content:
                             "I've tried followed following communities you mentioned in your message:\n\n" +
                             arr_matches.map(m => m[0]).join("\n\n"),
-                    });
+                    }).catch(err => console.error(err));
                 }
             },
         },
