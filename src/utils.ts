@@ -7,8 +7,6 @@ export const getPipedLinks = (text: string): UrlLink[] => {
         .filter((a: HTMLElement) => a.textContent)
         .map(a => new UrlLink(a.textContent!, a.href));
 
-    console.log(document.body.innerHTML);
-
     // convert youtube links to piped links
     const pipedLinks = links.filter(link => {
         const urlObj = new URL(link.href);
