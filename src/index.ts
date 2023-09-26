@@ -27,6 +27,7 @@ const bot = new LemmyBot({
     },
     federation: "all",
     dbFile: "db.sqlite3",
+    markAsBot: true,
     handlers: {
         comment: {
             handle: ({
