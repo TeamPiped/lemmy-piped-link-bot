@@ -32,9 +32,13 @@ const bot = new LemmyBot({
             handle: ({
                 commentView: {
                     comment: { content, id, post_id },
+                    creator: { bot_account },
                 },
                 botActions: { createComment },
             }) => {
+                if (bot_account) {
+                    return;
+                }
                 if (content) {
                     const pipedLinks = getPipedLinks(content);
                     if (pipedLinks.length > 0) {
