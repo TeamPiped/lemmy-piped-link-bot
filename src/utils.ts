@@ -11,22 +11,17 @@ export const getPipedLinks = (text: string): UrlLink[] => {
     const pipedLinks = links.filter(link => {
         const urlObj = new URL(link.href);
 
-        const hostnames = [
-            "youtube.com",
-            "youtube-nocookie.com",
-            "youtu.be",
-        ];
+        const hostnames = ["youtube.com", "youtube-nocookie.com", "youtu.be"];
 
         const isYt =
-            urlObj.hostname.endsWith(".youtube.com") ||
-            hostnames.some(hostname => urlObj.hostname === hostname);
+            urlObj.hostname.endsWith(".youtube.com") || hostnames.some(hostname => urlObj.hostname === hostname);
 
         if (isYt) {
             urlObj.hostname = "piped.video";
             link.href = urlObj.toString();
             link.text = hostnames.reduce(
-                (carry, hostname) => carry.replaceAll(hostname, "piped.video"),
-                link.text
+                (carry: string, hostname: string) => carry.split(hostname).join("piped.video"),
+                link.text,
             );
         }
 
