@@ -6,6 +6,7 @@
     "scripts": {
         "start": "tsx src/index.ts",
         "build": "esbuild src/index.ts --bundle --platform=node --packages=external --outfile=dist/index.js",
+        "format": "prettier src --write && eslint src/**/*.ts --fix",
         "lint": "prettier src --check && eslint src/**/*.ts",
         "test": "jest"
     },
