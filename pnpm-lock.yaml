@@ -12,8 +12,8 @@ dependencies:
     specifier: 0.4.6
     version: 0.4.6
   marked:
-    specifier: 11.0.0
-    version: 11.0.0
+    specifier: 11.0.1
+    version: 11.0.1
 
 devDependencies:
   '@babel/core':
@@ -4295,8 +4295,8 @@ packages:
       tmpl: 1.0.5
     dev: true
 
-  /marked@11.0.0:
-    resolution: {integrity: sha512-2GsW34uXaFEGTQ/+3rCnNC6vUYTAgFuDLGl70v/aWinA5mIJtTrrFAmfbLOfVvgPyxXuDVL9He/7reCK+6j3Sw==}
+  /marked@11.0.1:
+    resolution: {integrity: sha512-P4kDhFEMlvLePBPRwOcMOv6+lYUbhfbSxJFs3Jb4Qx7v6K7l+k8Dxh9CEGfRvK71tL+qIFz5y7Pe4uzt4+/A3A==}
     engines: {node: '>= 18'}
     hasBin: true
     dev: false
