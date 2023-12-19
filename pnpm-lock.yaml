@@ -9,8 +9,8 @@ dependencies:
     specifier: 23.0.1
     version: 23.0.1
   lemmy-bot:
-    specifier: 0.5.0
-    version: 0.5.0
+    specifier: 0.5.1
+    version: 0.5.1
   marked:
     specifier: 11.1.0
     version: 11.1.0
@@ -3615,6 +3615,7 @@ packages:
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    requiresBuild: true
 
   /istanbul-lib-coverage@3.2.2:
     resolution: {integrity: sha512-O8dpsF+r0WV/8MNRKfnmrtCWhuKjxrq2w+jpzBL5UZKTi2LeVWnWOmWRxFlesJONmc+wLAGvKQZEOanko0LFTg==}
@@ -4184,8 +4185,9 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /lemmy-bot@0.5.0:
-    resolution: {integrity: sha512-ApCrOa3wpW1Bj+7Us5RmZWLuSarwnNq4c9S+z/nfJm8AXDs2hz/kZuedvjIISVLmMt3rHUbkShjCPFActCJwhQ==}
+  /lemmy-bot@0.5.1:
+    resolution: {integrity: sha512-dRguH3qHLHRdnZzZ5MvguVy94k8rz/COvF+KJGkn0OOx/Qhzp/ByDv9vXZh0x9rzkddfVp4ODPZCgEDrDPbJog==}
+    engines: {node: '>=18.0.0'}
     dependencies:
       lemmy-js-client: 0.19.0
       node-cron: 3.0.3
@@ -4253,6 +4255,7 @@ packages:
   /lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
+    requiresBuild: true
     dependencies:
       yallist: 4.0.0
 
@@ -4879,6 +4882,7 @@ packages:
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    requiresBuild: true
     dev: false
 
   /saxes@6.0.0:
