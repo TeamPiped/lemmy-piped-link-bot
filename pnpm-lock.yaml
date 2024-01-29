@@ -9,8 +9,8 @@ dependencies:
     specifier: 24.0.0
     version: 24.0.0
   lemmy-bot:
-    specifier: 0.5.1
-    version: 0.5.1
+    specifier: 0.5.2
+    version: 0.5.2
   marked:
     specifier: 11.2.0
     version: 11.2.0
@@ -4275,11 +4275,11 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /lemmy-bot@0.5.1:
-    resolution: {integrity: sha512-dRguH3qHLHRdnZzZ5MvguVy94k8rz/COvF+KJGkn0OOx/Qhzp/ByDv9vXZh0x9rzkddfVp4ODPZCgEDrDPbJog==}
+  /lemmy-bot@0.5.2:
+    resolution: {integrity: sha512-UcbrzjklazSQdW4HwPWjklzUx1Ff8sRhmr6UJOdpLnCYt8P0AdXtnz62bPFKalIGx7kPz8ueSjTQUozoZUjBAg==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      lemmy-js-client: 0.19.0
+      lemmy-js-client: 0.19.3-alpha.6
       node-cron: 3.0.3
       sqlite3: 5.1.7
     transitivePeerDependencies:
@@ -4288,8 +4288,8 @@ packages:
       - supports-color
     dev: false
 
-  /lemmy-js-client@0.19.0:
-    resolution: {integrity: sha512-h+E8wC9RKjlToWw9+kuGFAzk4Fiaf61KqAwzvoCDAfj2L1r+YNt5EDMOggGCoRx5PlqLuIVr7BNEU46KxJfmHA==}
+  /lemmy-js-client@0.19.3-alpha.6:
+    resolution: {integrity: sha512-ywDGNKxvqRKxSj6r0+KYi+N91B94UQBb6MJkzpY76QtRZ/dHkLIJQdBkC4uxlBNBZkO4t+XIyqMZ1QfBIA0tow==}
     dependencies:
       cross-fetch: 3.1.8
       form-data: 4.0.0
