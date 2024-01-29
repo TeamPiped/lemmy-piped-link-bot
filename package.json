@@ -33,7 +33,7 @@
     },
     "dependencies": {
         "jsdom": "24.0.0",
-        "lemmy-bot": "0.5.1",
+        "lemmy-bot": "0.5.2",
         "marked": "11.2.0"
     }
 }
