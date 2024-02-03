@@ -18,6 +18,7 @@ export const getPipedLinks = (text: string): UrlLink[] => {
 
         if (isYt) {
             urlObj.hostname = "piped.video";
+            urlObj.searchParams.delete("si");
             link.href = urlObj.toString();
             link.text = hostnames.reduce(
                 (carry: string, hostname: string) => carry.split(hostname).join("piped.video"),

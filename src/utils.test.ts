@@ -12,7 +12,7 @@ describe("getPipedLinks", () => {
 
     it("should not convert links when talking about the toplevel domain", () => {
         const text = "I like piped.video! I don't like youtube.com :(";
-        const expected = [];
+        const expected: string[] = [];
         expect(getPipedLinks(text)).toEqual(expected);
     });
 
@@ -42,6 +42,12 @@ describe("getPipedLinks", () => {
             new UrlLink("Link 3", "https://piped.video/watch?v=dQw4w9WgXcQ"),
             new UrlLink("Link 4", "https://piped.video/dQw4w9WgXcQ"),
         ];
+        expect(getPipedLinks(text)).toEqual(expected);
+    });
+
+    it("should remove tracking parameters", () => {
+        const text = "Watch this video: [Link](https://youtu.be/dQw4w9WgXcQ?si=oeKe3230gb8b8GIF)";
+        const expected = [new UrlLink("Link", "https://piped.video/dQw4w9WgXcQ")];
         expect(getPipedLinks(text)).toEqual(expected);
     });
 });
