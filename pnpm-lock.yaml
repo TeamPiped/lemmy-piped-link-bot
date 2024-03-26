@@ -9,8 +9,8 @@ dependencies:
     specifier: 24.0.0
     version: 24.0.0
   lemmy-bot:
-    specifier: 0.5.2
-    version: 0.5.2
+    specifier: 0.6.1
+    version: 0.6.1
   marked:
     specifier: 12.0.1
     version: 12.0.1
@@ -3338,6 +3338,7 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+    requiresBuild: true
 
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -3602,6 +3603,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    requiresBuild: true
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -4256,8 +4258,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /lemmy-bot@0.5.2:
-    resolution: {integrity: sha512-UcbrzjklazSQdW4HwPWjklzUx1Ff8sRhmr6UJOdpLnCYt8P0AdXtnz62bPFKalIGx7kPz8ueSjTQUozoZUjBAg==}
+  /lemmy-bot@0.6.1:
+    resolution: {integrity: sha512-xg/W6+ErN+53M9PVGvYouy8/FYbWPpXJiJseqguWvWmkPJXvbe4Nw7QjfW3zgq3BRkq9RttG9VLB3kmTt/yyxA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       lemmy-js-client: 0.19.3-alpha.6
@@ -4728,6 +4730,7 @@ packages:
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
 
   /path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -5527,6 +5530,7 @@ packages:
 
   /wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+    requiresBuild: true
 
   /write-file-atomic@4.0.2:
     resolution: {integrity: sha512-7KxauUdBmSdWnmpaGFg+ppNjKF8uNLry8LyzjauQDOVONfFLNKrKvQOxZ/VuTIcS/gge/YNahf5RIIQWTSarlg==}
