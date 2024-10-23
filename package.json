@@ -17,7 +17,7 @@
         "@babel/core": "7.25.9",
         "@babel/preset-env": "7.25.9",
         "@babel/preset-typescript": "7.25.9",
-        "@types/jest": "29.5.13",
+        "@types/jest": "29.5.14",
         "@types/jsdom": "21.1.7",
         "@types/node": "20.16.14",
         "@typescript-eslint/eslint-plugin": "7.18.0",
