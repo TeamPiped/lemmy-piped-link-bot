@@ -14,9 +14,9 @@
     "author": "",
     "license": "agpl-3.0",
     "devDependencies": {
-        "@babel/core": "7.25.9",
-        "@babel/preset-env": "7.25.9",
-        "@babel/preset-typescript": "7.25.9",
+        "@babel/core": "7.26.0",
+        "@babel/preset-env": "7.26.0",
+        "@babel/preset-typescript": "7.26.0",
         "@types/jest": "29.5.14",
         "@types/jsdom": "21.1.7",
         "@types/node": "20.17.1",
