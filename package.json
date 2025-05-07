@@ -19,7 +19,7 @@
         "@babel/preset-typescript": "7.27.1",
         "@types/jest": "29.5.14",
         "@types/jsdom": "21.1.7",
-        "@types/node": "20.17.43",
+        "@types/node": "20.17.44",
         "@typescript-eslint/eslint-plugin": "7.18.0",
         "@typescript-eslint/parser": "7.18.0",
         "babel-jest": "29.7.0",
