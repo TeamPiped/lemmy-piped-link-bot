@@ -32,7 +32,7 @@
         "typescript": "5.8.3"
     },
     "dependencies": {
-        "jsdom": "24.1.3",
+        "jsdom": "26.1.0",
         "lemmy-bot": "0.5.2",
         "marked": "12.0.2"
     }
