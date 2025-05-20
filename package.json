@@ -34,6 +34,6 @@
     "dependencies": {
         "jsdom": "24.1.3",
         "lemmy-bot": "0.5.2",
-        "marked": "12.0.2"
+        "marked": "15.0.12"
     }
 }
