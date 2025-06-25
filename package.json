@@ -26,7 +26,7 @@
         "esbuild": "0.25.5",
         "eslint": "8.57.1",
         "eslint-config-prettier": "9.1.0",
-        "jest": "30.0.2",
+        "jest": "30.0.3",
         "prettier": "3.6.0",
         "tsx": "4.20.3",
         "typescript": "5.8.3"
