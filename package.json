@@ -28,7 +28,7 @@
         "eslint-config-prettier": "9.1.2",
         "jest": "30.2.0",
         "prettier": "3.8.1",
-        "tsx": "4.20.6",
+        "tsx": "4.21.0",
         "typescript": "5.8.3"
     },
     "dependencies": {
