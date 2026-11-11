@@ -18,7 +18,7 @@
         "@babel/preset-env": "7.29.2",
         "@babel/preset-typescript": "7.28.5",
         "@types/jest": "30.0.0",
-        "@types/jsdom": "28.0.1",
+        "@types/jsdom": "28.0.3",
         "@types/node": "22.19.17",
         "@typescript-eslint/eslint-plugin": "8.58.0",
         "@typescript-eslint/parser": "8.58.0",
